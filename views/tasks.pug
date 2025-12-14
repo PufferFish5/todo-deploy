@@ -27,3 +27,9 @@ block content
               span(style="color: red; font-weight: bold") #{task.title}
     else
       p No tasks
+  div(style="margin-bottom: 20px; border: 1px dashed #ccc; padding: 10px;")
+    h4 test
+    label(for="manualTokenInput") JWT:
+    input#manualTokenInput(type="text", placeholder="Вставте повний Bearer токен")
+    button#saveTokenBtn(type="button") Save token
+    p Saved
