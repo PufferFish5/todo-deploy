@@ -65,10 +65,19 @@ mongoose.connect(DB_URI)
   .catch(err => console.error("❌ Помилка підключення:", err));
 
 
-const currentUser = await taskController.getUserInfo();
-const tasksArray = await taskController.getAllTasks();
-app.get("/tasks", async (req, res) => {
-  res.render('tasks', { tasks: tasksArray, user: currentUser });
+app.get("/tasks", protect, async (req, res) => {
+    try {
+        const userId = req.user._id; 
+        const tasksArray = await taskController.getAllTasks(userId);
+        const currentUser = req.user; 
+        res.render('tasks', { 
+            tasks: tasksArray, 
+            user: currentUser 
+        });
+    } catch (e) {
+        console.error("Error loading tasks page:", e);
+        res.status(500).send("Error loading user data.");
+    }
 });
 
 //getus
