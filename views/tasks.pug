@@ -1,0 +1,29 @@
+extends index
+
+block content
+  section.add-t
+    h2 Add new task
+    form#addForm
+      label(for="titleInput") Task name: 
+      input#titleInput(type="text", name="title")
+      label(for="descriptionInput") Description:
+      textarea#descriptionInput(name="description")
+      label(for="prioritySelect") Priority:
+      select#prioritySelect(name="priority")
+        option(value="1") 1 (Low)
+        option(value="2") 2
+        option(value="3", selected) 3 (Medium)
+        option(value="4") 4
+        option(value="5") 5 (High)
+      button(type="submit") Add
+  section.task-list
+    if tasks.length
+      ul
+        each task in tasks
+          li
+            if task.status === 'completed'
+              span(style="color: green; font-weight: bold") #{task.title}
+            else
+              span(style="color: red; font-weight: bold") #{task.title}
+    else
+      p No tasks

@@ -1,0 +1,24 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0") 
+        link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css")
+    body
+        header
+            h1 Things to do
+            block user_info
+                if user
+                    div.user-info(style="float: right; padding: 10px; border: 1px solid #ccc;")
+                        p Logged in as: 
+                            b #{user.username}
+                        p Role: 
+                            i #{user.role}
+            hr
+        main
+            block content
+            script(src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js")
+            script(src="/notyf_script.js")
+        footer
+            hr
+            img(src="/kruto.jpg" width="200")
