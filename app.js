@@ -8,7 +8,7 @@ import authRoutes from './routes/authRoutes.js';
 import { protect } from './middleware/authMiddleware.js';
 
 //console.log(process.env); 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 const DB_URI = process.env.DB_URI;
 const app = express();
 app.use(express.json())
